@@ -1,0 +1,10 @@
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+jwtmock:
+  oauth-authorization-server-url: ${OAUTH_AUTHORIZATION_SERVER_URL:/.well-known/oauth-authorization-server}
+  jwks-url: ${JWKS_URL:/oauth2/jwks}
+  default-payload: '${DEFAULT_PAYLOAD:{"sub": "12345"}}'
+  default-token-expiration-second: ${DEFAULT_TOKEN_EXPIRATION_SECOND:86400} # 24 hours
+server:
+  port: 8090

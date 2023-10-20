@@ -1,0 +1,25 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <link th:href="@{/css/jwt.css}" rel="stylesheet">
+    <script th:src="@{/js/token.js}"></script>
+    <title>generate JWT</title>
+</head>
+<body>
+<h1>generate JWT</h1>
+<form method="post" th:action="@{/token}" id="jwt_form">
+    <div class="">
+        <div class="title">
+            <p>Payload</p>
+        </div>
+        <textarea id="payload" class="payload-text-area" th:text="${defaultJwt}" ></textarea>
+    </div>
+    <button type="submit">generate</button>
+</form>
+<div class="result-box">
+    <textarea id="generated_jwt_text" class="generated-jwt-text-area"></textarea>
+    <button id="copy-button" type="copy">copy</button>
+</div>
+</body>
+</html>

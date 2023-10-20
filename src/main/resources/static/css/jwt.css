@@ -1,0 +1,13 @@
+.payload-text-area {
+    width: 450px;
+    height: 200px;
+}
+
+.generated-jwt-text-area {
+    width: 800px;
+    height: 250px;
+}
+
+.result-box {
+    margin: 5px 0;
+}
