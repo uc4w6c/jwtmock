@@ -6,9 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.jwtmock.config.InstantService;
 import com.github.jwtmock.config.JwkMockConfigurationProperties;
 import com.github.jwtmock.presentation.helper.UriHelper;
-import org.springframework.stereotype.Service;
-
 import java.util.Map;
+import org.springframework.stereotype.Service;
 
 @Service
 public class DefaultPayloadService {
@@ -17,7 +16,11 @@ public class DefaultPayloadService {
   private UriHelper uriHelper;
   private InstantService instantService;
 
-  public DefaultPayloadService(JwkMockConfigurationProperties jwkMockConfigurationProperties, ObjectMapper objectMapper, UriHelper uriHelper, InstantService instantService) {
+  public DefaultPayloadService(
+      JwkMockConfigurationProperties jwkMockConfigurationProperties,
+      ObjectMapper objectMapper,
+      UriHelper uriHelper,
+      InstantService instantService) {
     this.jwkMockConfigurationProperties = jwkMockConfigurationProperties;
     this.objectMapper = objectMapper;
     this.uriHelper = uriHelper;
@@ -38,13 +41,13 @@ public class DefaultPayloadService {
     defaultPayload.put("iss", issuer);
     long nowEpochSecond = instantService.now().getEpochSecond();
     defaultPayload.put("nbf", nowEpochSecond);
-    defaultPayload.put("exp", nowEpochSecond + jwkMockConfigurationProperties.defaultTokenExpirationSecond());
+    defaultPayload.put(
+        "exp", nowEpochSecond + jwkMockConfigurationProperties.defaultTokenExpirationSecond());
     defaultPayload.put("iat", nowEpochSecond);
 
     String payload;
     try {
-      payload =
-          objectMapper.writeValueAsString(defaultPayload);
+      payload = objectMapper.writeValueAsString(defaultPayload);
     } catch (JsonProcessingException e) {
       throw new RuntimeException(e);
     }
