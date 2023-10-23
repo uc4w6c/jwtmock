@@ -38,6 +38,9 @@ spotless {
 bootBuildImage {
 	imageName = "ghcr.io/uc4w6c/jwtmock"
 
-	builder = "dashaun/builder:tiny"
+	builder = "gcr.io/paketo-buildpacks/builder:base"
+	buildpacks = [
+		"gcr.io/paketo-buildpacks/java:10.2.0"
+	]
 	environment["BP_JVM_VERSION"] = "21"
 }
