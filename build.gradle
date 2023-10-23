@@ -34,3 +34,10 @@ spotless {
 		googleJavaFormat()
 	}
 }
+
+bootBuildImage {
+	imageName = "ghcr.io/uc4w6c/jwtmock"
+
+	// builder = "dashaun/builder:tiny" // for M1 mac
+	environment["BP_JVM_VERSION"] = "21"
+}
